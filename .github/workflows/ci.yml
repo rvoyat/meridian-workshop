@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend-tests:
+    name: Backend Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv sync --dev
+        working-directory: server
+
+      - name: Run tests
+        run: uv run pytest ../tests/backend/ -v --tb=short
+        working-directory: server
+
+  frontend-build:
+    name: Frontend Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: client
+
+      - name: Build
+        run: npm run build
+        working-directory: client
+
+  e2e:
+    name: Cypress E2E
+    runs-on: ubuntu-latest
+    needs: [backend-tests, frontend-build]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v4
+
+      - name: Install Python dependencies
+        run: uv sync
+        working-directory: server
+
+      - name: Start FastAPI backend
+        run: nohup uv run python main.py > /tmp/backend.log 2>&1 &
+        working-directory: server
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install Node dependencies
+        run: npm ci
+        working-directory: client
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: client
+          install: false
+          start: npm run dev
+          wait-on: 'http://localhost:3000, http://localhost:8001/api/inventory'
+          wait-on-timeout: 60
+
+      - name: Upload screenshots on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: client/cypress/screenshots
+          if-no-files-found: ignore
