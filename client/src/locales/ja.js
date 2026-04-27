@@ -339,6 +339,7 @@ export default {
   language: {
     english: 'English',
     japanese: '日本語',
+    italian: 'イタリア語',
     selectLanguage: '言語を選択'
   },
 

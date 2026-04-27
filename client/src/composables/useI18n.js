@@ -1,19 +1,23 @@
 import { ref, computed } from 'vue'
 import en from '../locales/en'
 import ja from '../locales/ja'
+import it from '../locales/it'
 
 const translations = {
   en,
-  ja
+  ja,
+  it
 }
 
 // Load saved locale from localStorage, default to 'en'
 const savedLocale = localStorage.getItem('app-locale') || 'en'
 const currentLocale = ref(savedLocale)
 
-// Currency is automatically set based on locale (en -> USD, ja -> JPY)
+// Currency is automatically set based on locale (en -> USD, ja -> JPY, it -> EUR)
 const currentCurrency = computed(() => {
-  return currentLocale.value === 'ja' ? 'JPY' : 'USD'
+  if (currentLocale.value === 'ja') return 'JPY'
+  if (currentLocale.value === 'it') return 'EUR'
+  return 'USD'
 })
 
 export function useI18n() {
@@ -69,47 +73,42 @@ export function useI18n() {
   const localeName = computed(() => {
     const names = {
       en: 'English',
-      ja: '日本語'
+      ja: '日本語',
+      it: 'Italiano'
     }
     return names[currentLocale.value] || currentLocale.value
   })
 
   // Translate product names
   const translateProductName = (productName) => {
-    if (currentLocale.value === 'ja' && translations.ja.productNames[productName]) {
-      return translations.ja.productNames[productName]
+    const locale = currentLocale.value
+    if (translations[locale]?.productNames?.[productName]) {
+      return translations[locale].productNames[productName]
     }
     return productName
   }
 
   // Translate customer names
   const translateCustomerName = (customerName) => {
-    if (currentLocale.value === 'ja' && translations.ja.customerNames[customerName]) {
-      return translations.ja.customerNames[customerName]
+    const locale = currentLocale.value
+    if (translations[locale]?.customerNames?.[customerName]) {
+      return translations[locale].customerNames[customerName]
     }
     return customerName
   }
 
   // Translate warehouse names
   const translateWarehouse = (warehouseName) => {
-    if (currentLocale.value === 'ja') {
-      // Handle city names
-      const cityMap = {
-        'San Francisco': 'サンフランシスコ',
-        'London': 'ロンドン',
-        'Tokyo': '東京'
-      }
-
-      if (cityMap[warehouseName]) {
-        return cityMap[warehouseName]
-      }
-
-      // Handle "Warehouse X-##" pattern
-      if (warehouseName.startsWith('Warehouse ')) {
+    const cityMaps = {
+      ja: { 'San Francisco': 'サンフランシスコ', 'London': 'ロンドン', 'Tokyo': '東京' },
+      it: { 'London': 'Londra' }
+    }
+    const map = cityMaps[currentLocale.value]
+    if (map) {
+      if (map[warehouseName]) return map[warehouseName]
+      if (currentLocale.value === 'ja' && warehouseName.startsWith('Warehouse ')) {
         return warehouseName.replace('Warehouse ', '倉庫')
       }
-
-      return warehouseName
     }
     return warehouseName
   }

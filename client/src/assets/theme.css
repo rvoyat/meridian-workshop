@@ -1,0 +1,97 @@
+:root {
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f8fafc;
+  --bg-surface-raised: #f1f5f9;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: #1e293b;
+  --text-body: #334155;
+  --text-heading: #475569;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+
+  --accent: #2563eb;
+  --accent-soft: #3b82f6;
+  --accent-bright: #60a5fa;
+  --accent-bg: #eff6ff;
+
+  --color-success: #059669;
+  --color-success-bright: #10b981;
+  --color-success-bg: #d1fae5;
+  --color-success-text: #065f46;
+  --color-warning: #ea580c;
+  --color-warning-bright: #f59e0b;
+  --color-warning-bg: #fed7aa;
+  --color-warning-text: #92400e;
+  --color-danger: #dc2626;
+  --color-danger-bright: #ef4444;
+  --color-danger-bg: #fecaca;
+  --color-danger-text: #991b1b;
+  --color-info-bg: #dbeafe;
+  --color-info-text: #1e40af;
+  --color-stable-bg: #e0e7ff;
+  --color-stable-text: #3730a3;
+
+  --chart-blue: #3b82f6;
+  --chart-purple: #8b5cf6;
+  --chart-green: #10b981;
+  --chart-amber: #f59e0b;
+  --chart-red: #ef4444;
+  --chart-revenue: #0f172a;
+
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-dropdown: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --bg-app: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-surface-hover: #293548;
+  --bg-surface-raised: #334155;
+  --border: #334155;
+  --border-hover: #475569;
+  --text-primary: #f1f5f9;
+  --text-secondary: #e2e8f0;
+  --text-body: #cbd5e1;
+  --text-heading: #94a3b8;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+
+  --accent: #3b82f6;
+  --accent-soft: #60a5fa;
+  --accent-bright: #93c5fd;
+  --accent-bg: rgba(59, 130, 246, 0.15);
+
+  --color-success: #34d399;
+  --color-success-bright: #6ee7b7;
+  --color-success-bg: rgba(6, 95, 70, 0.3);
+  --color-success-text: #6ee7b7;
+  --color-warning: #fb923c;
+  --color-warning-bright: #fbbf24;
+  --color-warning-bg: rgba(146, 64, 14, 0.3);
+  --color-warning-text: #fcd34d;
+  --color-danger: #f87171;
+  --color-danger-bright: #fca5a5;
+  --color-danger-bg: rgba(153, 27, 27, 0.3);
+  --color-danger-text: #fca5a5;
+  --color-info-bg: rgba(30, 64, 175, 0.3);
+  --color-info-text: #93c5fd;
+  --color-stable-bg: rgba(55, 48, 163, 0.3);
+  --color-stable-text: #a5b4fc;
+
+  --chart-blue: #60a5fa;
+  --chart-purple: #a78bfa;
+  --chart-green: #34d399;
+  --chart-amber: #fbbf24;
+  --chart-red: #f87171;
+  --chart-revenue: #e2e8f0;
+
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-dropdown: 0 10px 25px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
