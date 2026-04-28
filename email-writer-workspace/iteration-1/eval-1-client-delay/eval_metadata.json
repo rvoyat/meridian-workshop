@@ -1,0 +1,39 @@
+{
+  "eval_id": 1,
+  "eval_name": "client-delay-formal-italian",
+  "prompt": "Write an email to my client Maria Rossi to let her know the project will be delayed by two weeks due to a dependency issue",
+  "assertions": [
+    {
+      "name": "language-is-italian",
+      "description": "Email body is written in Italian"
+    },
+    {
+      "name": "formal-salutation",
+      "description": "Uses a formal Italian salutation (Gentile or Spettabile, not Ciao)"
+    },
+    {
+      "name": "lei-form-used",
+      "description": "Uses the formal 'Lei' form (capitalized) throughout, not 'tu'"
+    },
+    {
+      "name": "delay-mentioned",
+      "description": "The two-week delay is explicitly mentioned"
+    },
+    {
+      "name": "dependency-reason-mentioned",
+      "description": "The dependency issue is cited as the cause of the delay"
+    },
+    {
+      "name": "no-padding-phrases",
+      "description": "Does not contain filler phrases like 'spero che questa email la trovi bene' or 'non esiti a contattarmi'"
+    },
+    {
+      "name": "specific-subject-line",
+      "description": "Subject line is specific (not generic like 'Aggiornamento' alone)"
+    },
+    {
+      "name": "formal-sign-off",
+      "description": "Closes with a formal Italian sign-off (Distinti saluti or Cordiali saluti)"
+    }
+  ]
+}

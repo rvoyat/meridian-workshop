@@ -1,0 +1,31 @@
+{
+  "eval_id": 2,
+  "eval_name": "team-standup-casual",
+  "prompt": "Draft a quick message to my team about the standup being moved to 3pm tomorrow",
+  "assertions": [
+    {
+      "name": "casual-salutation",
+      "description": "Opens with a casual salutation (Ciao, Hi, Hey team — not Gentile or Dear)"
+    },
+    {
+      "name": "mentions-3pm",
+      "description": "The new time (3pm or 15:00) is clearly stated"
+    },
+    {
+      "name": "mentions-tomorrow",
+      "description": "Tomorrow is explicitly mentioned"
+    },
+    {
+      "name": "body-is-brief",
+      "description": "Body is short — under 5 sentences, no unnecessary elaboration"
+    },
+    {
+      "name": "no-padding-phrases",
+      "description": "Does not contain filler like 'I hope this finds you well' or 'please don't hesitate to'"
+    },
+    {
+      "name": "casual-sign-off",
+      "description": "Closes informally (Saluti, Thanks, Cheers — not Distinti saluti)"
+    }
+  ]
+}

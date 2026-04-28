@@ -1,0 +1,35 @@
+{
+  "eval_id": 3,
+  "eval_name": "intro-stakeholder-formal-english",
+  "prompt": "Write an email to introduce myself to a new stakeholder at a partner company in London",
+  "assertions": [
+    {
+      "name": "language-is-english",
+      "description": "Email is written in English"
+    },
+    {
+      "name": "formal-register",
+      "description": "Uses formal English register (Dear [Name/Sir/Madam], full sentences)"
+    },
+    {
+      "name": "no-contractions",
+      "description": "Body does not use contractions (I'm, I've, we're, etc.)"
+    },
+    {
+      "name": "specific-subject-line",
+      "description": "Subject is specific and descriptive (not just 'Introduction')"
+    },
+    {
+      "name": "introduces-roger",
+      "description": "Introduces Roger by name and provides relevant professional context"
+    },
+    {
+      "name": "clear-call-to-action",
+      "description": "Ends with a clear next step (e.g., suggests a call or meeting)"
+    },
+    {
+      "name": "no-padding-phrases",
+      "description": "Does not contain 'I hope this email finds you well', 'please don't hesitate', or similar filler"
+    }
+  ]
+}
